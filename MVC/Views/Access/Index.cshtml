@@ -1,0 +1,41 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutLogin.cshtml";
+
+}
+<body  style="background-image: url('https://static.vecteezy.com/system/resources/previews/002/127/642/non_2x/smart-phone-on-smooth-dark-blue-background-futuristic-technology-design-illustration-free-vector.jpg'); background-size: 100%; background-repeat: no-repeat; ">
+    <div class="row">
+        <form id="frm">
+            <div class="col-lg-10 col-lg-offset-3 form-group">
+                <label>USER</label>
+                <input type="text" name="user" class="form-control" placeholder="user" />
+                <label>PASSWORD</label>
+                <input type="password" name="pass" class="form-control" placeholder="password" />
+                <input type="submit" class="btn btn-success" value="Entrar" />
+            </div>
+        </form>
+    </div>
+</body>
+
+
+@section scripts
+{
+    <script>
+    $(document).ready(function () {
+        $('#frm').submit(function (e) {
+            e.preventDefault();
+
+            url = "@Url.Content("~/Access/Enter")";
+            parametros = $(this).serialize();
+
+            $.post(url, parametros, function (data) {
+                if (data == "1") {
+                    document.location.href = "@Url.Content("~/User/Index")";
+                } else {
+                    alert("Contraseña o usuario incorrecto"+data);
+                }
+            });
+        });
+    });
+    </script>
+}
