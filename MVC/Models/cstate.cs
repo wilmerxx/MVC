@@ -17,13 +17,13 @@ namespace MVC.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public cstate()
         {
-            this.login = new HashSet<login>();
+            this.usuario = new HashSet<usuario>();
         }
     
-        public int id { get; set; }
-        public string name { get; set; }
+        public int id_cat { get; set; }
+        public string name_cat { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<login> login { get; set; }
+        public virtual ICollection<usuario> usuario { get; set; }
     }
 }

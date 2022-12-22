@@ -13,27 +13,30 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
-<body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
+<body class="p-0 ">
+    <div class="container">
+        <nav class="navbar navbar-expand-lg p-0 navbar-dark" style="height: 60px; background-color: #1780A9 ">
+            <div class="container-fluid ">
+
+                @Html.ActionLink("Alquier de bicicletas", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
                 </button>
-                @Html.ActionLink("Tienda de telefonos", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+
+                <div class="navbar-collapse collapse">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">@Html.ActionLink("Inicio", "Index", "Home", null, new { @class = "nav-link" })</li>
+                        <li class="nav-item">@Html.ActionLink("Usuarios", "Index", "User", null, new { @class = "nav-link" })</li>
+                    </ul>
+                </div>
+
             </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Inicio", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Usuarios", "Index", "User")</li>
-                </ul>
-            </div>
-        </div>
+        </nav>
     </div>
-    <div class="container body-content">
-        
+
+    <div class="container">
+
         @RenderBody()
         <hr />
         <footer>

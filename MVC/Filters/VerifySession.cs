@@ -1,15 +1,15 @@
-﻿using System.Web;
-using System.Web.Mvc;
-using MVC.Controllers;
+﻿using MVC.Controllers;
 using MVC.Models;
+using System.Web;
+using System.Web.Mvc;
 namespace MVC.Filters
 {
     public class VerifySession : ActionFilterAttribute
     {
         public override void OnActionExecuting(ActionExecutingContext filterContext)
-        { 
-            var oUser = (login)HttpContext.Current.Session["User"];
-            if(oUser == null)
+        {
+            var oUser = (usuario)HttpContext.Current.Session["User"];
+            if (oUser == null)
             {
                 if (filterContext.Controller is AccessController == false)
                 {

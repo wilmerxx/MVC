@@ -1,10 +1,8 @@
-﻿using System.Collections.Generic;
-using System.Web.Mvc;
-using System.Collections;
+﻿using MVC.Models;
+using MVC.Models.TableViewModel;
+using System.Collections.Generic;
 using System.Linq;
-using MVC.Models;
-using MVC.Models.ViewModels;
-
+using System.Web.Mvc;
 namespace MVC.Controllers
 {
     public class UserController : Controller
@@ -12,24 +10,20 @@ namespace MVC.Controllers
         // GET: User
         public ActionResult Index()
         {
-            
-                List<UserTableViewModels> lst = null;
-                using (MVCEntities4 db = new MVCEntities4())
-                {
-                   lst = (from d in db.login
-                           where d.idState == 1
-                           orderby d.usuario 
-                           select new UserTableViewModels
-                           {
-                               Usuario = d.usuario,
-                               Id = d.id,
-                               Edad = (int)d.edad
-                           }).ToList();
-                }
-                return View(lst);
-            
-          
-           
+            List<UserTableViewModels> lst = null;
+            using (mvcEntities db = new mvcEntities())
+            {
+                lst = (from d in db.usuario
+                       where d.id_cat == 1
+                       orderby d.user_usu
+                       select new UserTableViewModels
+                       {
+                           Usuario = d.user_usu,
+                           Email = d.email,
+                           Edad = (int)d.edad
+                       }).ToList();
+            }
+            return View(lst);
         }
     }
 }
